@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.item-button{
+    color: white;
+    background-color: rgb(70,95,238);
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 25px;
+}
+
+.item-button:hover {
+    background-color: rgb(55,76,193);
+    width: 190px;
+    height: 190px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 35px;
+}
