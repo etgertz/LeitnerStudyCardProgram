@@ -1,10 +1,3 @@
-/*const LeitnerSystem = require("./LeitnerSystem");
-const Deck = require("./Deck");
-const StudyCard = require("./StudyCard");
-const Bin = require("./Bin");
-const activeBin = 0;*/
-//const activeDeck;
-
 const activeDeck=null;
 const activeBin=null;
 
@@ -27,31 +20,39 @@ function wrong() {}
 
 function right() {}
 
+let addButton = document.getElementById("card_add_button");
+if(addButton){//adds input cards to deck creation page
+  addButton.addEventListener("click", function() {
+    let cardDiv = document.createElement("div");
+    cardDiv.className="two-column";
+    let textarea1 = document.createElement("textarea");
+    textarea1.placeholder="Term";
+    let textarea2 = document.createElement("textarea");
+    textarea2.placeholder="Definition";
+    cardDiv.appendChild(textarea1);
+    cardDiv.appendChild(textarea2);
+    //textarea1.id = terms[terms.length-1].textContent;//probably update with the card number from its deck (ie create card object before hand)
+    document.getElementById("card_editor").appendChild(cardDiv);
+  });
+}
 
-document.getElementById("card_add_button").addEventListener("click", function() {
-  let cardDiv = document.createElement("div");
-  cardDiv.class="two-column";
-  let textarea1 = document.createElement("textarea");
-  textarea1.placeholder="Term";
-  let textarea2 = document.createElement("textarea");
-  textarea2.placeholder="Definition";
-  cardDiv.appendChild(textarea1);
-  cardDiv.appendChild(textarea2);
-  //const terms = document.getElementsByClassName("Term");
-  //textarea1.id = terms[terms.length-1].textContent;//probably update with the card number from its deck (ie create card object before hand)
-  document.getElementById("card_editor").appendChild(cardDiv);
+document.addEventListener("DOMContentLoaded", function () {//makes sure proper bins loaded on page load
+  generateButtons();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  generateButtons(); // Call function when page loads
-});
-
-document.getElementById("bins").addEventListener("input", function () {
-  generateButtons(); // Also update when input changes
-});
+let binsInput = document.getElementById("bins")
+if(binsInput){
+  binsInput.addEventListener("input", function () {
+    generateButtons(); // Also update when input changes
+  });
+}
 
 function generateButtons(){
   const inputField = document.getElementById("bins");
+  let container = document.getElementById("bin_button_container");
+
+  if (!inputField || !container) return;//guard clause
+
   let value = parseInt(inputField.value, 10);
   if (value > 5) {
     inputField.value = 5; // Force value back to max
@@ -60,7 +61,6 @@ function generateButtons(){
   }
 
   let buttonCount = parseInt(document.getElementById("bins").value); // Get the number (1 to 5)
-  let container = document.getElementById("bin_button_container");
 
   container.innerHTML = ""; // Clear existing buttons
 
