@@ -5,6 +5,9 @@ const Bin = require("./Bin");
 const activeBin = 0;*/
 //const activeDeck;
 
+const activeDeck=null;
+const activeBin=null;
+
 import { Bin } from "./Bin.js";
 import { StudyCard } from "./StudyCard.js";
 import { LeitnerSystem } from "./LeitnerSystem.js";
@@ -23,6 +26,21 @@ function displayCard() {}
 function wrong() {}
 
 function right() {}
+
+
+document.getElementById("card_add_button").addEventListener("click", function() {
+  let cardDiv = document.createElement("div");
+  cardDiv.class="two-column";
+  let textarea1 = document.createElement("textarea");
+  textarea1.placeholder="Term";
+  let textarea2 = document.createElement("textarea");
+  textarea2.placeholder="Definition";
+  cardDiv.appendChild(textarea1);
+  cardDiv.appendChild(textarea2);
+  //const terms = document.getElementsByClassName("Term");
+  //textarea1.id = terms[terms.length-1].textContent;//probably update with the card number from its deck (ie create card object before hand)
+  document.getElementById("card_editor").appendChild(cardDiv);
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   generateButtons(); // Call function when page loads
