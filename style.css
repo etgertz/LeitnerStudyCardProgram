@@ -38,6 +38,14 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.two-column{
+    display: grid;
+    gap: 40px;
+    padding-left: 12%;
+    padding-right: 12%;
+    grid-template-columns: 1fr 1fr;
+}
+
 .bin-button{
     color: white;
     background-color: var(--primary-color2);
