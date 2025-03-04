@@ -1,6 +1,7 @@
 :root{
     --primary-color1: rgb(70,95,238);
     --primary-color2: rgb(55,76,193);
+    --primary-color3: rgb(177, 209, 239);
     --accent-color1: rgb(27, 199, 127);
     --accent-color2:  rgb(23, 166, 106);
     --highlight-color1: rgb(249, 135, 107);
@@ -22,6 +23,19 @@ h1 {
     color: white;
     width: 100%;
     height: 45px;
+}
+
+.card {
+    width: max(65vw, 200px); /* 50% of viewport width, max 300px */
+    height: max(32vw, 112.5px); /* Keeps aspect ratio */
+    background-color: var(--primary-color3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.3rem;/* Alter later to scale down if text exceeds div*/
+    font-family: 'Trebuchet MS', sans-serif;
+    border-radius: max(2vw,12px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .bin-button{
