@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <script type="module" src="StudyCard.js"></script>
     <script type="module" src="Bin.js"></script>
     <script type="module" src="Deck.js"></script>
     <script type="module" src="LeitnerSystem.js"></script>
     <script type="module" src="script.js"></script>
-    <h1>Select a bin to begin</h1>
-
-    <div id="button_container">
-        <button class="item-button">1</button>
+    <div class="banner">
+      <h1>My Website Name</h1>
     </div>
+    <h2>Select a bin to begin</h2>
+
+    <div id="bin_button_container"></div>
 
     <label for="bins">Bins:</label>
-    <input class="quantity" id="bins" min="1" max="5" name="form-0-quantity" value="1" type="number" title="">
-</body>
+    <input
+      class="quantity"
+      id="bins"
+      min="1"
+      max="5"
+      name="form-0-quantity"
+      value="1"
+      type="number"
+      title=""
+    />
+  </body>
 </html>
