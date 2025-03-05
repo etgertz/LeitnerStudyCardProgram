@@ -1,18 +1,18 @@
-const activeDeck=null;
-const activeBin=null;
-
-import { Bin } from "./Bin.js";
+let activeBin=null;
+import { LeitnerSystem } from "./LeitnerSystem.js";
+const studySystem = new LeitnerSystem();
+/*import { Bin } from "./Bin.js";
 import { StudyCard } from "./StudyCard.js";
 import { LeitnerSystem } from "./LeitnerSystem.js";
 
 console.log("Study Card App Loaded!");
 
-const studySystem = new LeitnerSystem();
+
 studySystem.addDeck("test deck");
 const myCard = new StudyCard("What is JavaScript?", "A programming language");
 studySystem.getDeck("test deck").addCard(myCard);
 
-console.log(studySystem.getDeck("test deck").removeCard());
+console.log(studySystem.getDeck("test deck").removeCard());*/
 
 function displayCard() {}
 
@@ -20,9 +20,19 @@ function wrong() {}
 
 function right() {}
 
+let newDeckButton = document.getElementById("new_deck");
+if(newDeckButton){
+  newDeckButton.addEventListener("click", () =>{
+    //open popup to take in deck name
+    //make new deck and store as activeDeck
+    //open up edit.html
+
+  });
+}
+
 let addButton = document.getElementById("card_add_button");
 if(addButton){//adds input cards to deck creation page
-  addButton.addEventListener("click", function() {
+  addButton.addEventListener("click", () =>{
     let cardDiv = document.createElement("div");
     cardDiv.className="two-column";
     let textarea1 = document.createElement("textarea");
@@ -36,13 +46,13 @@ if(addButton){//adds input cards to deck creation page
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {//makes sure proper bins loaded on page load
+document.addEventListener("DOMContentLoaded", () =>{//makes sure proper bins loaded on page load
   generateButtons();
 });
 
 let binsInput = document.getElementById("bins")
 if(binsInput){
-  binsInput.addEventListener("input", function () {
+  binsInput.addEventListener("input", () =>{
     generateButtons(); // Also update when input changes
   });
 }
@@ -60,7 +70,7 @@ function generateButtons(){
     inputField.value = 1; // Ensure minimum is 1
   }
 
-  let buttonCount = parseInt(document.getElementById("bins").value); // Get the number (1 to 5)
+  let buttonCount = parseInt(inputField.value); // Get the number (1 to 5)
 
   container.innerHTML = ""; // Clear existing buttons
 
@@ -69,7 +79,7 @@ function generateButtons(){
     button.textContent = `${i}`; // Set button text
     button.id = "button"+`${i}`;
     button.className = "bin-button"; // Assign a class
-    button.addEventListener("click", function () {
+    button.addEventListener("click", () =>{
         openBin(i);
     });
 
@@ -80,4 +90,42 @@ function generateButtons(){
 function openBin(binNumber){
   //localStorage.setItem("selectedBin", binNumber);//set variable to bin number
   window.location.href = "flashcards.html";
+}
+
+/*modal handling*/
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
+
+openModalButtons.forEach(button=>{
+  button.addEventListener('click', () =>{
+    const modal = document.querySelector(button.dataset.modalTarget);
+    openModal(modal);
+  })
+});
+
+closeModalButtons.forEach(button=>{
+  button.addEventListener('click', () =>{
+    const modal = button.closest('.modal');
+    closeModal(modal);
+  })
+});
+
+overlay.addEventListener('click', () =>{
+  const modals = document.querySelectorAll('.modal.active');
+  modals.forEach(modal =>{
+    closeModal(modal);
+  });
+});
+
+function openModal(modal){
+  if(modal == null)return;
+  modal.classList.add('active');
+  overlay.classList.add('active');
+}
+
+function closeModal(modal){
+  if(modal == null)return;
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
 }
