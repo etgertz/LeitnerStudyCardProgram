@@ -2,6 +2,7 @@
 import { Bin } from "./Bin.js";
 export class Deck {
   static cards = 0;
+  static currentBin;
 
   constructor(name) {
     this.name = name;
@@ -39,6 +40,15 @@ export class Deck {
     if (binIndex > 0) {
       this.bins[binIndex - 1].addCard(this.bins[binIndex].removeCard());
     }
+  }
+
+  getCurrentBin(){
+    return currentBin;
+  }
+
+  setCurrentBin(binNumber){
+    if(binNumber>0 && binNumber<6)
+    currentBin = this.bins[binNumber-1];
   }
 }
 //module.exports = Deck;
