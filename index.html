@@ -17,11 +17,26 @@
       <h1>My Website Name</h1>
     </div>
     <div class="select_button_container">
-      <button class="select-button">Create New Deck</button>
-      <button class="select-button">Upload Deck File</button>
+      <button data-modal-target="#modal" class="select-button" id="new_deck">Create New Deck</button>
+      <button class="select-button" id="upload_deck">Upload Deck File</button>
     </div>
     <div class="deck_container">
       <h2>No decks found.</h2>
     </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="modal-title">Enter the name of your new deck.</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div class="modal-body">
+      <form action="edit.html">
+        <textarea
+          class="modal-input"
+          placeholder="Enter name"
+        ></textarea>
+        <input class="submit" id="deck-submit" type="submit" value="Submit" />
+      </form>
+    </div>
+    <div id="overlay"></div>
   </body>
 </html>
