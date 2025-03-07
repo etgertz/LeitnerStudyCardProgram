@@ -2,7 +2,7 @@
 import { Deck } from "./Deck.js";
 
 export class LeitnerSystem {
-  static activeDeck=null;
+  static activeDeck = null;
 
   constructor() {
     this.decks = {};
@@ -22,12 +22,20 @@ export class LeitnerSystem {
     return Object.keys(this.decks);
   }
 
-  setActiveDeck(name){
-    this.activeDeck = getDeck(name);
+  setActiveDeck(name) {
+    this.activeDeck = this.getDeck(name);
   }
 
-  getActiveDeck(){
+  getActiveDeck() {
     return this.activeDeck;
+  }
+
+  size() {
+    return this.listDecks().length;
+  }
+
+  isEmpty() {
+    return this.size() === 0;
   }
 }
 //module.exports = LeitnerSystem;
